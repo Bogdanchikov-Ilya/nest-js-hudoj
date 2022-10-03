@@ -15,7 +15,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 			port: parseInt(<string>process.env.POSTGRES_PORT),
 			username: process.env.POSTGRES_USER,
 			password: process.env.POSTGRES_PASSWORD,
-			database: process.env.POSTGRES_DATABASE
+			database: process.env.POSTGRES_DATABASE,
+			autoLoadEntities: true,
+			synchronize: true,
 		}),
 		AuthModule, ProductModule],
 	controllers: [AppController],
