@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './product/product.module';
 import { ConfigModule } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { UserModule } from './user/user.module';
+import { UserEntity } from "./user/entities/user.entity";
 
 @Module({
 	imports: [
@@ -18,8 +20,9 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 			database: process.env.POSTGRES_DATABASE,
 			autoLoadEntities: true,
 			synchronize: true,
+			entities: [UserEntity]
 		}),
-		AuthModule, ProductModule],
+		AuthModule, ProductModule, UserModule],
 	controllers: [AppController],
 	providers: [AppService],
 })
